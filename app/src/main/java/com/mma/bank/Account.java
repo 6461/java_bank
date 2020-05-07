@@ -1,14 +1,18 @@
 package com.mma.bank;
 
-public class Account {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private User user;
     private String number;
     private String type;
-    private long balance = 0;
-    private long withdrawLimit = 0;
-    private long transferLimit = 0;
-    private boolean withdrawAllowed = true;
-    private boolean transferAllowed = true;
+    private long balance;
+    private long withdrawLimit;
+    private long transferLimit;
+    private boolean withdrawAllowed;
+    private boolean transferAllowed;
 
     public Account(User user, String number, String type, long balance, long withdrawLimit, long transferLimit, boolean withdrawAllowed, boolean transferAllowed) {
         this.user = user;
@@ -83,5 +87,11 @@ public class Account {
 
     public void setTransferAllowed(boolean transferAllowed) {
         this.transferAllowed = transferAllowed;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("%s (%.2f)", number, ((float)balance / 100));
     }
 }

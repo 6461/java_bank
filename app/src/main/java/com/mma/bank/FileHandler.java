@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 
 public class FileHandler {
     private static FileHandler instance = null;
@@ -31,7 +32,9 @@ public class FileHandler {
 
     private FileHandler() {}
 
-    public void readFile(Object obj, String filename) {
+    public Object readFile(Type type, String filename) {
+        Object obj = null;
+
         try {
             Gson gson = new Gson();
             InputStream is = context.openFileInput(filename);
@@ -43,26 +46,21 @@ public class FileHandler {
                 json = json + line;
             }
 
-            //TODO remove this
-            System.out.println(json);
-
             is.close();
-            obj = gson.fromJson(json, obj.getClass());
+            obj = gson.fromJson(json, type);
         } catch (IOException e) {
             Log.e("IOException", e.toString());
         }
+
+        return obj;
     }
 
-    public void writeFile(Object obj, String filename) {
+    public void writeFile(Type type, Object obj, String filename) {
         try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting().serializeNulls();
             Gson gson = builder.create();
-            String json = gson.toJson(obj);
-
-            //TODO remove this
-            System.out.println(json);
-
+            String json = gson.toJson(obj, type);
             // Open stream for writing.
             OutputStream os = context.openFileOutput(filename, Context.MODE_PRIVATE);
             OutputStreamWriter osw = new OutputStreamWriter(os);

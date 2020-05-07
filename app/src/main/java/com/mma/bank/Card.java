@@ -1,8 +1,11 @@
 package com.mma.bank;
 
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Card {
+public class Card implements Serializable {
     private Account account;
     private String number;
     private String type;
@@ -65,5 +68,11 @@ public class Card {
 
     public void setPaymentLimit(long paymentLimit) {
         this.paymentLimit = paymentLimit;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return number;
     }
 }

@@ -4,4 +4,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:id="@+id/spinnerUser"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonUserEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="userEditAction"
+        android:text="Edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerUser" />
+
+    <Button
+        android:id="@+id/buttonUserAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="userAddAction"
+        android:text="Add"
+        app:layout_constraintStart_toEndOf="@+id/buttonUserEdit"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerUser" />
+
+    <Spinner
+        android:id="@+id/spinnerAccount"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUserAdd" />
+
+    <Button
+        android:id="@+id/buttonAccountEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="accountEditAction"
+        android:text="Edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAccount" />
+
+    <Button
+        android:id="@+id/buttonAccountAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="accountAddAction"
+        android:text="Add"
+        app:layout_constraintStart_toEndOf="@+id/buttonAccountEdit"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAccount" />
+
+    <Button
+        android:id="@+id/buttonAccountHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="accountHistoryAction"
+        android:text="History"
+        app:layout_constraintStart_toEndOf="@+id/buttonAccountAdd"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAccount" />
+
+    <Button
+        android:id="@+id/buttonDeposit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="depositAction"
+        android:text="Deposit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAccountEdit" />
+
+    <Button
+        android:id="@+id/buttonWithdraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="withdrawAction"
+        android:text="Withdraw"
+        app:layout_constraintStart_toEndOf="@+id/buttonDeposit"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAccountAdd" />
+
+    <Button
+        android:id="@+id/buttonTransfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="transferAction"
+        android:text="Transfer"
+        app:layout_constraintStart_toEndOf="@+id/buttonWithdraw"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAccountHistory" />
+
+    <Spinner
+        android:id="@+id/spinnerCard"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWithdraw" />
+
+    <Button
+        android:id="@+id/buttonCardEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="cardEditAction"
+        android:text="Edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCard" />
+
+    <Button
+        android:id="@+id/buttonCardAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="cardAddAction"
+        android:text="Add"
+        app:layout_constraintStart_toEndOf="@+id/buttonCardEdit"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCard" />
+
+    <Button
+        android:id="@+id/buttonCardPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="cardPayAction"
+        android:text="Pay"
+        app:layout_constraintStart_toEndOf="@+id/buttonCardAdd"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCard" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,9 @@
 package com.mma.bank;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Transaction {
+public class Transaction implements Serializable {
     private Account account;
     private Date date;
     private String type;

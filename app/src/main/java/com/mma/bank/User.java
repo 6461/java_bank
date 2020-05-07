@@ -1,8 +1,11 @@
 package com.mma.bank;
 
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
     private String name;
     private Date dateOfBirth;
     private String address;
@@ -45,5 +48,11 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }
