@@ -6,29 +6,29 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Card {
-    public static final String CARD_ID = "bank.card.id";
-    public static final String CARD_NUMBER = "bank.card.number";
-    public static final String CARD_TYPE = "bank.card.type";
-    public static final String CARD_VALID = "bank.card.valid";
-    public static final String CARD_LIMIT = "bank.card.limit";
-    public static final String CARD_ALLOWED = "bank.card.allowed";
+    public static final String ID = "bank.card.id";
+    public static final String NUMBER = "bank.card.number";
+    public static final String TYPE = "bank.card.type";
+    public static final String VALID = "bank.card.valid";
+    public static final String LIMIT = "bank.card.limit";
+    public static final String ALLOWED = "bank.card.allowed";
 
     private String id;
     private String accountID;
     private String number;
     private String type;
     private Date dateValid;
-    private boolean paymentAllowed;
     private long paymentLimit;
+    private boolean paymentAllowed;
 
-    public Card(String accountID, String number, String type, Date dateValid, boolean paymentAllowed, long paymentLimit) {
+    public Card(String accountID, String number, String type, Date dateValid, long paymentLimit, boolean paymentAllowed) {
         this.id = UUID.randomUUID().toString();
         this.accountID = accountID;
         this.number = number;
         this.type = type;
         this.dateValid = dateValid;
-        this.paymentAllowed = paymentAllowed;
         this.paymentLimit = paymentLimit;
+        this.paymentAllowed = paymentAllowed;
     }
 
     public String getID() {

@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editType" />
 
     <EditText
-        android:id="@+id/editWithdraw"
+        android:id="@+id/editPayment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -71,7 +71,7 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchWithdraw" />
+        app:layout_constraintTop_toBottomOf="@+id/switchPayment" />
 
     <EditText
         android:id="@+id/editTransfer"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/switchTransfer" />
 
     <Switch
-        android:id="@+id/switchWithdraw"
+        android:id="@+id/switchPayment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -108,5 +108,5 @@
         android:text="Transfer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editWithdraw" />
+        app:layout_constraintTop_toBottomOf="@+id/editPayment" />
 </androidx.constraintlayout.widget.ConstraintLayout>

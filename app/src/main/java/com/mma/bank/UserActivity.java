@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.Date;
-
 public class UserActivity extends AppCompatActivity {
 
     private String userID;
@@ -29,23 +27,23 @@ public class UserActivity extends AppCompatActivity {
         editPhone = findViewById(R.id.editPhone);
 
         Intent intent = getIntent();
-        userID = intent.getStringExtra(User.USER_ID);
+        userID = intent.getStringExtra(User.ID);
 
         if (userID != null) {
-            editName.setText(intent.getStringExtra(User.USER_NAME));
-            editDateOfBirth.setText(intent.getStringExtra(User.USER_DOB));
-            editAddress.setText(intent.getStringExtra(User.USER_ADDRESS));
-            editPhone.setText(intent.getStringExtra(User.USER_PHONE));
+            editName.setText(intent.getStringExtra(User.NAME));
+            editDateOfBirth.setText(intent.getStringExtra(User.DOB));
+            editAddress.setText(intent.getStringExtra(User.ADDRESS));
+            editPhone.setText(intent.getStringExtra(User.PHONE));
         }
     }
 
     public void saveAction(View view) {
         Intent intent = new Intent();
-        intent.putExtra(User.USER_ID, userID);
-        intent.putExtra(User.USER_NAME, editName.getText().toString().trim());
-        intent.putExtra(User.USER_DOB, editDateOfBirth.getText().toString().trim());
-        intent.putExtra(User.USER_ADDRESS, editAddress.getText().toString().trim());
-        intent.putExtra(User.USER_PHONE, editPhone.getText().toString().trim());
+        intent.putExtra(User.ID, userID);
+        intent.putExtra(User.NAME, editName.getText().toString().trim());
+        intent.putExtra(User.DOB, editDateOfBirth.getText().toString().trim());
+        intent.putExtra(User.ADDRESS, editAddress.getText().toString().trim());
+        intent.putExtra(User.PHONE, editPhone.getText().toString().trim());
         setResult(RESULT_OK, intent);
         finish();
     }

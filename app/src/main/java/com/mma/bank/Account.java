@@ -5,10 +5,10 @@ import androidx.annotation.NonNull;
 import java.util.UUID;
 
 public class Account {
-    public static final String ACCOUNT_ID = "bank.account.id";
-    public static final String ACCOUNT_NUMBER = "bank.account.number";
-    public static final String ACCOUNT_TYPE = "bank.account.type";
-    public static final String ACCOUNT_BALANCE = "bank.account.balance";
+    public static final String ID = "bank.account.id";
+    public static final String NUMBER = "bank.account.number";
+    public static final String TYPE = "bank.account.type";
+    public static final String BALANCE = "bank.account.balance";
     public static final String WITHDRAW_LIMIT = "bank.account.w.limit";
     public static final String TRANSFER_LIMIT = "bank.account.t.limit";
     public static final String WITHDRAW_ALLOWED = "bank.account.w.allowed";
@@ -102,6 +102,51 @@ public class Account {
 
     public void setTransferAllowed(boolean transferAllowed) {
         this.transferAllowed = transferAllowed;
+    }
+
+    public boolean deposit(long amount) {
+        balance = balance + amount;
+
+        return true;
+    }
+
+    public boolean payment(long amount) {
+        boolean payment = false;
+
+        if (amount <= balance) {
+            balance = balance - amount;
+            payment = true;
+        }
+
+        return payment;
+    }
+
+    public boolean withdraw(long amount) {
+        boolean withdraw = false;
+
+        if (withdrawAllowed && amount <= withdrawLimit && amount <= balance) {
+            balance = balance - amount;
+            withdraw = true;
+        }
+
+        return withdraw;
+    }
+
+    public boolean transfer(long amount) {
+        boolean transfer = false;
+
+        if (transferAllowed && amount <= transferLimit && amount <= balance) {
+            balance = balance - amount;
+            transfer = true;
+        }
+
+        return transfer;
+    }
+
+    public boolean receive(long amount) {
+        balance = balance + amount;
+
+        return true;
     }
 
     @NonNull

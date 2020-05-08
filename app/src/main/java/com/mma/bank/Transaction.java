@@ -1,8 +1,12 @@
 package com.mma.bank;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 public class Transaction {
+    public static final String AMOUNT = "bank.transaction.amount";
+
     private String accountID;
     private Date date;
     private String type;
@@ -45,5 +49,11 @@ public class Transaction {
 
     public void setAmount(long amount) {
         this.amount = amount;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("%s %s %.2f", Converter.dateToString(date, "dd.MM.yyyy HH.mm"), type, ((double) amount / 100));
     }
 }

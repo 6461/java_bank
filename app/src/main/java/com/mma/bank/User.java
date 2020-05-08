@@ -6,11 +6,11 @@ import java.util.Date;
 import java.util.UUID;
 
 public class User {
-    public static final String USER_ID = "bank.user.id";
-    public static final String USER_NAME = "bank.user.name";
-    public static final String USER_DOB = "bank.user.dob";
-    public static final String USER_ADDRESS = "bank.user.address";
-    public static final String USER_PHONE = "bank.user.phone";
+    public static final String ID = "bank.user.id";
+    public static final String NAME = "bank.user.name";
+    public static final String DOB = "bank.user.dob";
+    public static final String ADDRESS = "bank.user.address";
+    public static final String PHONE = "bank.user.phone";
 
     private String id;
     private String name;
