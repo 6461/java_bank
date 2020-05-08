@@ -11,6 +11,8 @@ import java.util.Date;
 
 public class UserActivity extends AppCompatActivity {
 
+    private String userID;
+
     EditText editName = null;
     EditText editDateOfBirth = null;
     EditText editAddress = null;
@@ -27,25 +29,23 @@ public class UserActivity extends AppCompatActivity {
         editPhone = findViewById(R.id.editPhone);
 
         Intent intent = getIntent();
-        User user = (User) intent.getSerializableExtra(MainActivity.USER_EXTRA);
+        userID = intent.getStringExtra(User.USER_ID);
 
-        if (user != null) {
-            editName.setText(user.getName());
-            editDateOfBirth.setText(DateHandler.getString(user.getDateOfBirth(), "dd.MM.yyyy"));
-            editAddress.setText(user.getAddress());
-            editPhone.setText(user.getPhone());
+        if (userID != null) {
+            editName.setText(intent.getStringExtra(User.USER_NAME));
+            editDateOfBirth.setText(intent.getStringExtra(User.USER_DOB));
+            editAddress.setText(intent.getStringExtra(User.USER_ADDRESS));
+            editPhone.setText(intent.getStringExtra(User.USER_PHONE));
         }
     }
 
     public void saveAction(View view) {
-        String name = editName.getText().toString().trim();
-        Date dateOfBirth = DateHandler.parseDate(editDateOfBirth.getText().toString().trim(), "dd.MM.yyyy");
-        String address = editAddress.getText().toString().trim();
-        String phone = editPhone.getText().toString().trim();
-        User user = new User(name, dateOfBirth, address, phone);
-
         Intent intent = new Intent();
-        intent.putExtra(MainActivity.USER_EXTRA, user);
+        intent.putExtra(User.USER_ID, userID);
+        intent.putExtra(User.USER_NAME, editName.getText().toString().trim());
+        intent.putExtra(User.USER_DOB, editDateOfBirth.getText().toString().trim());
+        intent.putExtra(User.USER_ADDRESS, editAddress.getText().toString().trim());
+        intent.putExtra(User.USER_PHONE, editPhone.getText().toString().trim());
         setResult(RESULT_OK, intent);
         finish();
     }

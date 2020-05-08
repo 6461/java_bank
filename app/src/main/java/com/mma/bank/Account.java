@@ -2,10 +2,20 @@ package com.mma.bank;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
+import java.util.UUID;
 
-public class Account implements Serializable {
-    private User user;
+public class Account {
+    public static final String ACCOUNT_ID = "bank.account.id";
+    public static final String ACCOUNT_NUMBER = "bank.account.number";
+    public static final String ACCOUNT_TYPE = "bank.account.type";
+    public static final String ACCOUNT_BALANCE = "bank.account.balance";
+    public static final String WITHDRAW_LIMIT = "bank.account.w.limit";
+    public static final String TRANSFER_LIMIT = "bank.account.t.limit";
+    public static final String WITHDRAW_ALLOWED = "bank.account.w.allowed";
+    public static final String TRANSFER_ALLOWED = "bank.account.t.allowed";
+
+    private String id;
+    private String userID;
     private String number;
     private String type;
     private long balance;
@@ -14,8 +24,9 @@ public class Account implements Serializable {
     private boolean withdrawAllowed;
     private boolean transferAllowed;
 
-    public Account(User user, String number, String type, long balance, long withdrawLimit, long transferLimit, boolean withdrawAllowed, boolean transferAllowed) {
-        this.user = user;
+    public Account(String userID, String number, String type, long balance, long withdrawLimit, long transferLimit, boolean withdrawAllowed, boolean transferAllowed) {
+        this.id = UUID.randomUUID().toString();
+        this.userID = userID;
         this.number = number;
         this.type = type;
         this.balance = balance;
@@ -25,12 +36,16 @@ public class Account implements Serializable {
         this.transferAllowed = transferAllowed;
     }
 
-    public User getUser() {
-        return user;
+    public String getID() {
+        return id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getNumber() {

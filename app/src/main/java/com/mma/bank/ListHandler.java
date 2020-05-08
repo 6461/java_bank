@@ -48,4 +48,8 @@ public class ListHandler<T> {
 
         return remove;
     }
+
+    public void update() {
+        file.writeFile(type, list, filename);
+    }
 }

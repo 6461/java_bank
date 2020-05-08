@@ -2,19 +2,28 @@ package com.mma.bank;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
-public class Card implements Serializable {
-    private Account account;
+public class Card {
+    public static final String CARD_ID = "bank.card.id";
+    public static final String CARD_NUMBER = "bank.card.number";
+    public static final String CARD_TYPE = "bank.card.type";
+    public static final String CARD_VALID = "bank.card.valid";
+    public static final String CARD_LIMIT = "bank.card.limit";
+    public static final String CARD_ALLOWED = "bank.card.allowed";
+
+    private String id;
+    private String accountID;
     private String number;
     private String type;
     private Date dateValid;
-    private boolean paymentAllowed = true;
-    private long paymentLimit = 0;
+    private boolean paymentAllowed;
+    private long paymentLimit;
 
-    public Card(Account account, String number, String type, Date dateValid, boolean paymentAllowed, long paymentLimit) {
-        this.account = account;
+    public Card(String accountID, String number, String type, Date dateValid, boolean paymentAllowed, long paymentLimit) {
+        this.id = UUID.randomUUID().toString();
+        this.accountID = accountID;
         this.number = number;
         this.type = type;
         this.dateValid = dateValid;
@@ -22,12 +31,16 @@ public class Card implements Serializable {
         this.paymentLimit = paymentLimit;
     }
 
-    public Account getAccount() {
-        return account;
+    public String getID() {
+        return id;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public String getAccountID() {
+        return accountID;
+    }
+
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 
     public String getNumber() {

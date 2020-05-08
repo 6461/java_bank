@@ -2,20 +2,32 @@ package com.mma.bank;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
-public class User implements Serializable {
+public class User {
+    public static final String USER_ID = "bank.user.id";
+    public static final String USER_NAME = "bank.user.name";
+    public static final String USER_DOB = "bank.user.dob";
+    public static final String USER_ADDRESS = "bank.user.address";
+    public static final String USER_PHONE = "bank.user.phone";
+
+    private String id;
     private String name;
     private Date dateOfBirth;
     private String address;
     private String phone;
 
     public User(String name, Date dateOfBirth, String address, String phone) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.phone = phone;
+    }
+
+    public String getID() {
+        return id;
     }
 
     public String getName() {

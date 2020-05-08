@@ -1,27 +1,26 @@
 package com.mma.bank;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Transaction implements Serializable {
-    private Account account;
+public class Transaction {
+    private String accountID;
     private Date date;
     private String type;
     private long amount;
 
-    public Transaction(Account account, Date date, String type, long amount) {
-        this.account = account;
+    public Transaction(String accountID, Date date, String type, long amount) {
+        this.accountID = accountID;
         this.date = date;
         this.type = type;
         this.amount = amount;
     }
 
-    public Account getAccount() {
-        return account;
+    public String getAccountID() {
+        return accountID;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 
     public Date getDate() {
