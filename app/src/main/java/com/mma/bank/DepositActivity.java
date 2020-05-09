@@ -31,6 +31,10 @@ public class DepositActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Deposit button action.
+     * @param view View from activity.
+     */
     public void depositAction(View view) {
         Intent intent = new Intent();
         intent.putExtra(Account.ID, accountID);

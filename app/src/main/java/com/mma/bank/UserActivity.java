@@ -37,6 +37,10 @@ public class UserActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Save button action.
+     * @param view View from activity.
+     */
     public void saveAction(View view) {
         Intent intent = new Intent();
         intent.putExtra(User.ID, userID);

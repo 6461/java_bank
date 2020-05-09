@@ -32,21 +32,28 @@ public class FileHandler {
 
     private FileHandler() {}
 
+    /**
+     * Read JSON data from file and convert it to object.
+     * @param type Type of the object.
+     * @param filename Filename.
+     * @return File content.
+     */
     public Object readFile(Type type, String filename) {
         Object obj = null;
 
         try {
             Gson gson = new Gson();
+            // Open stream for reading.
             InputStream is = context.openFileInput(filename);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line = null;
             String json = "";
-
+            // Read JSON data from file.
             while ((line = br.readLine()) != null) {
                 json = json + line;
             }
-
             is.close();
+            // Deserialize data. Convert JSON to object.
             obj = gson.fromJson(json, type);
         } catch (IOException e) {
             Log.e("IOException", e.toString());
@@ -55,11 +62,18 @@ public class FileHandler {
         return obj;
     }
 
+    /**
+     * Convert object to JSON data and write it to file.
+     * @param type Type of the object.
+     * @param obj Data to write.
+     * @param filename Filename.
+     */
     public void writeFile(Type type, Object obj, String filename) {
         try {
             GsonBuilder builder = new GsonBuilder();
             builder.setPrettyPrinting().serializeNulls();
             Gson gson = builder.create();
+            // Serialize data. Convert object to JSON.
             String json = gson.toJson(obj, type);
             // Open stream for writing.
             OutputStream os = context.openFileOutput(filename, Context.MODE_PRIVATE);

@@ -44,6 +44,7 @@ public class TransferActivity extends AppCompatActivity {
             accounts = new ListHandler<>(accountType, "account_list.json");
             ArrayList<Account> data = new ArrayList<>();
 
+            // Show only accounts other that the selected one.
             for (Account account : accounts.getList()) {
                 if (!accountID.equals(account.getID())) {
                     data.add(account);
@@ -56,6 +57,10 @@ public class TransferActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Transfer button action.
+     * @param view View from activity.
+     */
     public void transferAction(View view) {
         Account account = (Account) spinnerAccount.getSelectedItem();
 

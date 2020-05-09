@@ -31,6 +31,10 @@ public class PaymentActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Pay button action.
+     * @param view View from activity.
+     */
     public void payAction(View view) {
         Intent intent = new Intent();
         intent.putExtra(Card.ID, cardID);

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     ListHandler<Card> cards = null;
     ListHandler<Transaction> transactions = null;
 
+    // Set data types for lists. Required for JSON serialization.
     Type userType = new TypeToken<ArrayList<User>>() {}.getType();
     Type accountType = new TypeToken<ArrayList<Account>>() {}.getType();
     Type cardType = new TypeToken<ArrayList<Card>>() {}.getType();
@@ -47,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set context for file handler. Required for file operations.
         FileHandler.setContext(this);
+        // Read list data from files.
         users = new ListHandler<>(userType, "user_list.json");
         accounts = new ListHandler<>(accountType, "account_list.json");
         cards = new ListHandler<>(cardType, "card_list.json");
@@ -70,11 +73,19 @@ public class MainActivity extends AppCompatActivity {
         cardComponent.setAdapter(cardAdapter);
     }
 
+    /**
+     * Add user button action.
+     * @param view View from activity.
+     */
     public void userAddAction(View view) {
         Intent intent = new Intent(this, UserActivity.class);
         startActivityForResult(intent, USER_REQUEST);
     }
 
+    /**
+     * Edit user button action.
+     * @param view View from activity.
+     */
     public void userEditAction(View view) {
         User user = (User) userComponent.getSelectedItem();
 
@@ -89,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Add account button action.
+     * @param view View from activity.
+     */
     public void accountAddAction(View view) {
         User user = (User) userComponent.getSelectedItem();
 
@@ -99,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Edit account button action.
+     * @param view View from activity.
+     */
     public void accountEditAction(View view) {
         Account account = (Account) accountComponent.getSelectedItem();
 
@@ -117,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Account history button action.
+     * @param view View from activity.
+     */
     public void accountHistoryAction(View view) {
         Account account = (Account) accountComponent.getSelectedItem();
 
@@ -127,6 +150,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Deposit money button action.
+     * @param view View from activity.
+     */
     public void depositAction(View view) {
         Account account = (Account) accountComponent.getSelectedItem();
 
@@ -138,6 +165,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Transfer money button action.
+     * @param view View from activity.
+     */
     public void transferAction(View view) {
         Account account = (Account) accountComponent.getSelectedItem();
 
@@ -149,6 +180,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Withdraw money button action.
+     * @param view View from activity.
+     */
     public void withdrawAction(View view) {
         Account account = (Account) accountComponent.getSelectedItem();
 
@@ -160,6 +195,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Add card button action.
+     * @param view View from activity.
+     */
     public void cardAddAction(View view) {
         Account account = (Account) accountComponent.getSelectedItem();
 
@@ -170,6 +209,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Edit card button action.
+     * @param view View from activity.
+     */
     public void cardEditAction(View view) {
         Card card = (Card) cardComponent.getSelectedItem();
 
@@ -186,6 +229,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Pay with card button action.
+     * @param view View from activity.
+     */
     public void cardPayAction(View view) {
         Card card = (Card) cardComponent.getSelectedItem();
 
@@ -201,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // User request. Add new user or edit user data.
         if (requestCode == USER_REQUEST && resultCode == RESULT_OK && data != null) {
             String id = data.getStringExtra(User.ID);
             String name = data.getStringExtra(User.NAME);
@@ -227,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
             userAdapter.notifyDataSetChanged();
         }
 
+        // Account request. Add new account or edit account data.
         if (requestCode == ACCOUNT_REQUEST && resultCode == RESULT_OK && data != null) {
             String userID = data.getStringExtra(User.ID);
             String id = data.getStringExtra(Account.ID);
@@ -260,6 +309,7 @@ public class MainActivity extends AppCompatActivity {
             accountAdapter.notifyDataSetChanged();
         }
 
+        // Card request. Add new card or edit card data.
         if (requestCode == CARD_REQUEST && resultCode == RESULT_OK && data != null) {
             String accountID = data.getStringExtra(Account.ID);
             String id = data.getStringExtra(Card.ID);
@@ -289,6 +339,7 @@ public class MainActivity extends AppCompatActivity {
             cardAdapter.notifyDataSetChanged();
         }
 
+        // Payment request. Process card payment.
         if (requestCode == PAYMENT_REQUEST && resultCode == RESULT_OK && data != null) {
             String id = data.getStringExtra(Card.ID);
             long amount = data.getLongExtra(Transaction.AMOUNT, 0);
@@ -317,6 +368,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // Deposit request. Process money deposit.
         if (requestCode == DEPOSIT_REQUEST && resultCode == RESULT_OK && data != null) {
             String accountID = data.getStringExtra(Account.ID);
             long amount = data.getLongExtra(Transaction.AMOUNT, 0);
@@ -335,6 +387,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // Withdraw request. Process money withdrawal.
         if (requestCode == WITHDRAW_REQUEST && resultCode == RESULT_OK && data != null) {
             String accountID = data.getStringExtra(Account.ID);
             long amount = data.getLongExtra(Transaction.AMOUNT, 0);
@@ -353,6 +406,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // Transfer request. Process money transfer.
         if (requestCode == TRANSFER_REQUEST && resultCode == RESULT_OK && data != null) {
             String senderID = data.getStringExtra(Account.ID + "1");
             String receiverID = data.getStringExtra(Account.ID + "2");

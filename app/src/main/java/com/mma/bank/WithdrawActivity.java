@@ -31,6 +31,10 @@ public class WithdrawActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Withdraw button action.
+     * @param view View from activity.
+     */
     public void withdrawAction(View view) {
         Intent intent = new Intent();
         intent.putExtra(Account.ID, accountID);

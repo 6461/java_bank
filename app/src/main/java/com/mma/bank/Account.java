@@ -104,12 +104,22 @@ public class Account {
         this.transferAllowed = transferAllowed;
     }
 
+    /**
+     * Deposit money to this account.
+     * @param amount Amount in cents.
+     * @return True on success.
+     */
     public boolean deposit(long amount) {
         balance = balance + amount;
 
         return true;
     }
 
+    /**
+     * Make a payment from this account.
+     * @param amount Amount in cents.
+     * @return True on success.
+     */
     public boolean payment(long amount) {
         boolean payment = false;
 
@@ -121,6 +131,11 @@ public class Account {
         return payment;
     }
 
+    /**
+     * Withdraw money from this account.
+     * @param amount Amount in cents.
+     * @return True on success.
+     */
     public boolean withdraw(long amount) {
         boolean withdraw = false;
 
@@ -132,6 +147,11 @@ public class Account {
         return withdraw;
     }
 
+    /**
+     * Transfer money from this account.
+     * @param amount Amount in cents.
+     * @return True on success.
+     */
     public boolean transfer(long amount) {
         boolean transfer = false;
 
@@ -143,6 +163,11 @@ public class Account {
         return transfer;
     }
 
+    /**
+     * Receive money to this account.
+     * @param amount Amount in cents.
+     * @return True on success.
+     */
     public boolean receive(long amount) {
         balance = balance + amount;
 

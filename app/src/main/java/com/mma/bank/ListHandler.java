@@ -25,6 +25,11 @@ public class ListHandler<T> {
         return list;
     }
 
+    /**
+     * Add item to list and update file.
+     * @param object Item to add.
+     * @return True on success.
+     */
     public boolean add(T object) {
         boolean add = false;
 
@@ -37,6 +42,11 @@ public class ListHandler<T> {
         return add;
     }
 
+    /**
+     * Remove item from list and update file.
+     * @param object Item to remove.
+     * @return True on success.
+     */
     public boolean remove(T object) {
         boolean remove = false;
 
@@ -49,6 +59,9 @@ public class ListHandler<T> {
         return remove;
     }
 
+    /**
+     * Update list to file.
+     */
     public void update() {
         file.writeFile(type, list, filename);
     }

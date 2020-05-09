@@ -7,6 +7,11 @@ import java.util.Date;
 
 public class Converter {
 
+    /**
+     * Parse money value to long.
+     * @param str Value as String.
+     * @return Value in cents.
+     */
     public static long moneyToLong(String str) {
         long value = 0;
 
@@ -20,12 +25,23 @@ public class Converter {
         return value;
     }
 
+    /**
+     * Convert money value to string.
+     * @param amount Value in cents.
+     * @return Value as String.
+     */
     public static String moneyToString(long amount) {
         double decimal = ((double) amount) / 100;
 
         return String.format("%.2f", decimal);
     }
 
+    /**
+     * Parse date from string.
+     * @param text Date as String.
+     * @param dateFormat Date format.
+     * @return Date.
+     */
     public static Date stringToDate(String text, String dateFormat) {
         Date date;
 
@@ -40,6 +56,12 @@ public class Converter {
         return date;
     }
 
+    /**
+     * Convert date to string.
+     * @param date Date.
+     * @param dateFormat Date format.
+     * @return Date as String.
+     */
     public static String dateToString(Date date, String dateFormat) {
         String dateString;
 

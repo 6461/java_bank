@@ -33,6 +33,7 @@ public class TransactionActivity extends AppCompatActivity {
             transactions = new ListHandler<>(transactionType, "transaction_list.json");
             ArrayList<Transaction> data = new ArrayList<>();
 
+            // Show only transactions of the current account.
             for (Transaction transaction : transactions.getList()) {
                 if (accountID.equals(transaction.getAccountID())) {
                     data.add(transaction);
